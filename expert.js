@@ -282,6 +282,23 @@ Test.prototype.nextStep = function() {
   $('#current-answer').attr('value', '')
 }
 
+function answerToWord(val) {
+  switch (val) {
+    case 100:
+      return 'Да.'
+    case 75:
+      return 'Вероятно.'
+    case 50:
+      return 'Не уверен.'
+    case 25:
+      return 'Соменваюсь.'
+    case 0:
+      return 'Нет.'
+    default:
+      return '...'
+  }
+}
+
 /**
  * обработка ответа. Измненение вероятности события по ответу
  * @param ans  - ответ (вероятность, от 0 до 100)
@@ -303,7 +320,11 @@ Test.prototype.processAnswer = function(ans) {
   }
   var template = '<div class="b-page-questions__answers-item">{0}</div>'
   $('#answers').html(
-    $('#answers').html() + template.replace('{0}', this.questions[0].q)
+    $('#answers').html() +
+      template.replace(
+        '{0}',
+        this.questions[0].q + ' Ответ: ' + answerToWord(ans)
+      )
   )
   this.questions.shift()
 }
