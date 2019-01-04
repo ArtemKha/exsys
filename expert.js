@@ -54,7 +54,7 @@ function saveToLocalStorage(test) {
   if (!checkLocalStorage()) {
     return
   }
-  for (var i = 0; localStorage[i]; i++) {
+  for (var i = 0; i < localStorage.length; i++) {
     if (localStorage['ExpertSys' + i].match(test.title)) {
       localStorage.setItem('ExpertSys' + i, test.stringify())
       return
@@ -303,7 +303,7 @@ function answerToWord(val) {
  * обработка ответа. Измненение вероятности события по ответу
  * @param ans  - ответ (вероятность, от 0 до 100)
  */
-Test.prototype.processAnswer = function(ans) {
+Test.prototype.processAnswer = function(ans) {]
   for (var i = 0; i < this.items.length; i++) {
     var point = this.items[i].questionPoints[this.questions[0].index]
     if (point) {
