@@ -303,7 +303,7 @@ function answerToWord(val) {
  * обработка ответа. Измненение вероятности события по ответу
  * @param ans  - ответ (вероятность, от 0 до 100)
  */
-Test.prototype.processAnswer = function(ans) {]
+Test.prototype.processAnswer = function(ans) {
   for (var i = 0; i < this.items.length; i++) {
     var point = this.items[i].questionPoints[this.questions[0].index]
     if (point) {
